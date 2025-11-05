@@ -22,7 +22,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USER }}
+          username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKER_SECRET }}
 
       # Step 4 — Build & Push Backend Image
@@ -32,7 +32,7 @@ jobs:
           context: ./STUDENTAPI-SPRINGBOOT
           file: ./STUDENTAPI-SPRINGBOOT/backend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USER }}/pansible-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USER }}/pansible-backend:latest
 
       # Step 5 — Build & Push Frontend Image
       - name: Build and Push Frontend Image
@@ -41,4 +41,4 @@ jobs:
           context: ./STUDENTAPI-REACT
           file: ./STUDENTAPI-REACT/frontend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USER }}/pansible-frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USER }}/pansible-frontend:latest
